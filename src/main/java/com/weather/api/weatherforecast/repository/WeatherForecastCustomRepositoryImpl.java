@@ -1,15 +1,11 @@
 package com.weather.api.weatherforecast.repository;
-
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
-
 import com.weather.api.weatherforecast.model.WeatherForecast;
-
 import lombok.RequiredArgsConstructor;
-
 
 @Repository
 @RequiredArgsConstructor
@@ -23,9 +19,5 @@ public class WeatherForecastCustomRepositoryImpl implements WeatherForecastCusto
         Update update = new Update();
         update.set("weatherData", weatherForecast.getWeatherData());
         mongoTemplate.upsert(query, update, WeatherForecast.class);
-
     }
-
-
-
 }
